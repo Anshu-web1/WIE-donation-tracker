@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> WIE Donation Tracker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #000000;
+        }
+        .hero {
+            position: relative;
+            text-align: center;
+            color: white;
+        }
+        .hero img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+        }
+        .hero-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 2rem;
+            font-weight: bold;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 10px 20px;
+            border-radius: 10px;
+        }
+        
+        
+        .container {
+            text-align: center;
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            margin: 20px auto;
+            width: 50%;
+        }
+        h1 {
+            color: #333;
+        }
+        #fundsDisplay {
+            font-size: 2rem;
+            margin: 20px 0;
+        }
+        input, button {
+            padding: 10px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 10px;
+        }
+        button {
+            background: #007BFF;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <img src="wie logo.png" alt="Donation Banner">
+        
+        <div class="hero-text">Help Us Make a Difference! Donate Today</div>
+    </div>
+    <div class="container">
+        <h1>Donation Tracker</h1>
+        <p id="fundsDisplay">Total Funds Collected: ₹0</p>
+        <input type="number" id="fundInput" placeholder="Enter amount to add">
+        <button onclick="updateFunds()">Update Funds</button>
+    </div>
+
+    <script>
+        let totalFunds = 0;
+
+        function updateFunds() {
+            const inputElement = document.getElementById('fundInput');
+            const fundsDisplay = document.getElementById('fundsDisplay');
+            let amount = parseInt(inputElement.value);
+
+            if (!isNaN(amount) && amount > 0) {
+                totalFunds += amount;
+                fundsDisplay.textContent = `Total Funds Collected: ₹${totalFunds}`;
+                inputElement.value = '';
+            } else {
+                alert('Please enter a valid amount!');
+            }
+        }
+    </script>
+</body>
+</html>
